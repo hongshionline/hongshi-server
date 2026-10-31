@@ -20,3 +20,4 @@ pub mod db{
 pub mod init;
 pub mod send_email;
 pub mod apikey;
+pub mod daily_limit;

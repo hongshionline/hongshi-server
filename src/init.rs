@@ -34,6 +34,7 @@ pub struct CaptchaConfig{
 #[derive(Deserialize)]
 pub struct WebConfig{
     pub listen_port: u32,
+    pub max_request_size: u32,
 }
 
 pub fn init_config() -> Result<Config, String> {
