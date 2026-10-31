@@ -1,0 +1,6 @@
+/target
+config.json
+/doc
+/logs
+*.json
+*.env
