@@ -9,6 +9,7 @@ pub struct Config{
     pub send_email: SendEmailConfig,
     pub captcha: CaptchaConfig,
     pub web: WebConfig,
+    pub modpack: ModpackConfig,
 }
 
 #[derive(Deserialize)]
@@ -35,6 +36,11 @@ pub struct CaptchaConfig{
 pub struct WebConfig{
     pub listen_port: u32,
     pub max_request_size: u32,
+}
+
+#[derive(Deserialize, Clone)]
+pub struct ModpackConfig{
+    pub cache_path: String,
 }
 
 pub fn init_config() -> Result<Config, String> {

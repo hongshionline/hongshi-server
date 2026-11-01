@@ -23,4 +23,5 @@ tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tracing-appender = "0.2"
 tower_governor = { version = "0.8", default-features = false, features = ["axum"] }
+axum_typed_multipart = "0.16.8"
 #axum-limit = "0.1"
