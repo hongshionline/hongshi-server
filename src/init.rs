@@ -52,3 +52,11 @@ pub fn init_config() -> Result<Config, String> {
     };
     Ok(config)
 }
+
+pub fn clear_modpacks(config: &ModpackConfig) {
+    //清理残余的整合包缓存文件
+    match fs::remove_dir_all(&config.cache_path) {
+        Ok(_) => tracing::info!("modpack cache removed"),
+        Err(e) => tracing::warn!("Error removing cache path: {}", e),
+    };
+}

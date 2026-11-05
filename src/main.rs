@@ -56,6 +56,8 @@ async fn main() {
     {
         tracing::error!("reset user.have_home failed: {err}");
     }
+    //清空缓存modpacks文件
+    init::clear_modpacks(&config.modpack);
 
     //创建verify code缓存
     let verify_code_cache = moka::Cache::builder()
@@ -177,6 +179,9 @@ async fn main() {
     ).layer(DefaultBodyLimit::max(config.web.max_request_size as usize)); //请求体大小限制
 
     tracing::info!("starting server listen : {}", config.web.listen_port);
+
+    //启动房间回收任务
+    hongshi_server::home_recycle::loop_recycle_homes(homes, pool.clone());
 
     //启动服务
     let listener = tokio::net::TcpListener::bind(format!("127.0.0.1:{}", config.web.listen_port)).await.unwrap();
